@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GIF Store</title>
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://cdn.detic.ro.gov.br/vendors/bootstrap/v4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.detic.ro.gov.br/vendors/fontawesome/v5/css/fontawesome-all.min.css">
+
+    <!-- Material Theme CSS -->
+    <!--Material Pro-->
+    <link rel="stylesheet" href="https://cdn.detic.ro.gov.br/themes/material-theme/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.detic.ro.gov.br/themes/material-theme/css/colors/blue.css" />
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+
+
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css">
+
+    <!-- Select 2 -->
+    <link href="~/lib/select2/select2.min.css" rel="stylesheet" />
+    <!-- Sweet Alert 2 -->
+    <link rel="stylesheet" href="https://cdn.detic.ro.gov.br/vendors/sweetalert/sweetalert2.min.css" />
+
+    <!-- JQuery (Load First) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+    <!--Toasty-->
+    <link href="~/lib/toasty/jquery.toast.css" rel="stylesheet" />
+    <!-- Pickers -->
+    <link href="~/lib/pickers/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/lib/pickers/jquery-clockpicker.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/app.css" />
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="navbar-header">
+                    <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                        <b>
+                            <i class="fas fa-users light-logo"></i>
+                        </b>
+                        <span>
+
+                            <span class="light-logo">GIF Store</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i> Menu</a></li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i> Menu</a> </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@*@lista[0]*@ Igor Dutra <i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li><a asp-action="LogOut" asp-controller="Home"><i class="fa fa-power-off"></i> Sair</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        @*@await Component.InvokeAsync("Menu")*@
+        <partial name="_Menu" />
+        <div class="page-wrapper pt-md-3">
+            <div class="container-fluid mt-3 mt-md-0">
+                <div class="card">
+                    <div class="card-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderSection("Modals", required: false)
+
+    <!-- jQuery -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.detic.ro.gov.br/vendors/bootstrap/v4/js/bootstrap.bundle.min.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>*@
+
+    <!-- Compression-->
+    <script src="https://compressjs.herokuapp.com/compress.js"></script>
+
+    <!-- Sticky -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/stickykit/jquery.sticky-kit.min.js"></script>
+
+    <!-- Theme -->
+    <script src="https://cdn.detic.ro.gov.br/themes/admin-pro/js/waves.js"></script>
+    <script src="https://cdn.detic.ro.gov.br/themes/admin-pro/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="https://cdn.detic.ro.gov.br/themes/admin-pro/js/sidebarmenu.js"></script>
+    <script src="https://cdn.detic.ro.gov.br/themes/admin-pro/js/custom.min.js"></script>
+
+    <!-- Validate -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/jqueryvalidate/jquery.validate.min.js"></script>
+    <script src="https://cdn.detic.ro.gov.br/vendors/jqueryvalidate/localization/messages_pt_BR.js"></script>
+
+    <!-- Mask -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/jquerymask/jquery.mask.min.js"></script>
+
+    <!-- Waypoints -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/waypoints/jquery.waypoints.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="~/custom/js/public.js"></script>
+    <script src="~/custom/js/mascaras.js"></script>
+
+    <!-- Toasty -->
+    <script src="https://cdn.detic.ro.gov.br/vendors/jquerytoast/jquery.toast.js"></script>
+    <script src="~/custom/js/toastr.js"></script>
+
+
+    <!-- AntiForgeryToken -->
+    <script>
+        function gettoken() {
+            var token = '@Html.AntiForgeryToken()';
+            token = $(token).val();
+            return token;
+        }
+    </script>
+
+    <script>
+        $('.voltar').on('click', function (e) {
+            e.preventDefault();
+            window.history.back();
+        });
+    </script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

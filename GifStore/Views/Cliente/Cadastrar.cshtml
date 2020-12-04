@@ -1,0 +1,38 @@
+﻿@model GifStore.Historias.Cliente.Cadastrar.CadastrarClienteViewModel
+@{
+    ViewData["Title"] = "Cadastrar CLiente";
+}
+
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="Cliente" asp-action="Cadastrar" id="formCadastrarCliente" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cpf" class="control-label">CPF</label>
+                <input asp-for="Cpf" name="cpf" id="cpf" class="form-control mask-cpf" />
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">E-mail</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-success"><em class="mdi mdi-check"></em> Salvar</button>
+                <a asp-action="Index" class="btn btn-outline-inverse"><em class="mdi mdi-close"></em> Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/custom/mascaras.js"></script>
+    <script src="~/custom/js/compartilhado/cadastrarCliente.js"></script>
+    <script src="~/custom/js/validacoes/validarCpf.js"></script>
+    <script src="~/custom/js/validacoes/validarEmail.js"></script>
+}
