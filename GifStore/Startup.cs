@@ -1,4 +1,5 @@
 using GifStore.Data;
+using GifStore.Historias.Cliente.Editar;
 using GifStore.Historias.Usuario.Cadastrar;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,7 @@ namespace GifStore
             services.AddDbContext<DataContexto>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
             services.AddScoped<DataContexto, DataContexto>();
             services.AddScoped<CadastrarCliente>();
+            services.AddScoped<EditarCliente>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
