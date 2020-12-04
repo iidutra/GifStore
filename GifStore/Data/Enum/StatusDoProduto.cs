@@ -2,7 +2,7 @@
 
 namespace GifStore.Data.Enum
 {
-    public enum StatusDaCompra
+    public enum StatusDoProduto
     {
         [Description("Ativo")]
         ativo,

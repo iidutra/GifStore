@@ -1,0 +1,44 @@
+﻿@model IEnumerable<GifStore.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <p class="mb-2">
+                <a asp-action="Cadastrar" class="btn btn-primary float-right">Cadastrar Produto</a>
+            </p>
+
+            <table class="table table-hover table-click">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Detalhes" asp-route-id="@item.Id">
+                                    @item.Nome
+                                </a>
+                            </td>
+                            <td>@item.Status</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/custom/mascaras.js"></script>
+}
