@@ -1,6 +1,8 @@
 ﻿using GifStore.Data;
 using GifStore.Historias.Cliente.Cadastrar;
+using GifStore.Historias.Cliente.Editar;
 using GifStore.Historias.Usuario.Cadastrar;
+using GifStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,6 +47,35 @@ namespace GifStore.Controllers
                 return NotFound();
 
             return View(cliente);
+        }
+        public async Task<IActionResult> Editar(int id)
+        {
+            var cliente = contexto.Clientes.Find(id);
+            var resultado = EditarVM(cliente);
+            return View(resultado);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar([FromServices] EditarCliente editarCliente,
+            EditarClienteViewModel editarClienteVm)
+        {
+            if (!ModelState.IsValid)
+                return View(editarClienteVm);
+
+            await editarCliente.Executar(editarClienteVm);
+            return RedirectToAction(nameof(Index));
+
+        }
+
+        public EditarClienteViewModel EditarVM(Cliente cliente)
+        {
+            return new EditarClienteViewModel()
+            {
+                Id = cliente.Id,
+                Nome = cliente.Nome,
+                Email = cliente.Email,
+                Cpf = cliente.Cpf
+            };
         }
     }
 }

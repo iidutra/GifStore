@@ -14,5 +14,12 @@
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Cpf { get; private set; }
+
+        public void AlterarDados(string nome, string email, string cpf)
+        {
+            Nome = nome;
+            Email = email;
+            Cpf = cpf;
+        }
     }
 }
