@@ -34,5 +34,17 @@ namespace GifStore.Controllers
             await cadastrarCliente.Executar(cadastrarClienteVm);
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Detalhes(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var cliente = contexto.Clientes.FirstOrDefault(x => x.Id == id);
+
+            if (cliente == null)
+                return NotFound();
+
+            return View(cliente);
+        }
     }
 }
