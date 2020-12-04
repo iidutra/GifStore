@@ -1,6 +1,7 @@
 ﻿using GifStore.Data;
 using GifStore.Historias.Cliente.Cadastrar;
 using GifStore.Historias.Cliente.Editar;
+using GifStore.Historias.Cliente.Excluir;
 using GifStore.Historias.Usuario.Cadastrar;
 using GifStore.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -65,6 +66,14 @@ namespace GifStore.Controllers
             await editarCliente.Executar(editarClienteVm);
             return RedirectToAction(nameof(Index));
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Excluir([FromServices] ExcluirCliente excluirCliente, int clienteId)
+        {
+            await excluirCliente.Executar(clienteId);
+            NotificarSucesso();
+            return RedirectToAction(nameof(Index));
         }
 
         public EditarClienteViewModel EditarVM(Cliente cliente)

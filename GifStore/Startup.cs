@@ -1,5 +1,6 @@
 using GifStore.Data;
 using GifStore.Historias.Cliente.Editar;
+using GifStore.Historias.Cliente.Excluir;
 using GifStore.Historias.Usuario.Cadastrar;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace GifStore
             services.AddScoped<DataContexto, DataContexto>();
             services.AddScoped<CadastrarCliente>();
             services.AddScoped<EditarCliente>();
+            services.AddScoped<ExcluirCliente>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

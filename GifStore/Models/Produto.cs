@@ -7,6 +7,6 @@ namespace GifStore.Models
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public StatusDaCompra Status { get; set; }
-        public Cliente Usuario { get; private set; }
+        public Cliente Cliente { get; private set; }
     }
 }

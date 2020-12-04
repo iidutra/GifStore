@@ -33,7 +33,36 @@
         </div>
         <p class="mb-2">
             <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary float-left">Editar</a>
+            <div class="col-md-4">
+                <button class="btn btn-secondary d-inline-block float-right abrir-modal-remover-atividade" data-toggle="modal" data-target="#modal-remover-cliente">
+                    <em class="mdi mdi-close"></em> Remover
+                </button>
+            </div>
         </p>
     </div>
 </div>
 
+@section Modals {
+    <div id="modal-remover-cliente" class="modal" tabindex="-1" role="dialog" aria-labelledby="modalRemoverCliente" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalRemoverCliente">Remover atividade</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <form asp-controller="Cliente" asp-action="Excluir" method="post">
+                    <input type="hidden" name="clienteId" value="@Model.Id" />
+                    <input type="hidden" name="id" value="" />
+
+                    <div class="modal-body">
+                        <h5 class="mb-3">Deseja realmente remover esse cliente?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-danger float-left">Remover</button>
+                        <button type="button" class="btn btn-outline-secondary waves-effect text-left" data-dismiss="modal">Fechar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
