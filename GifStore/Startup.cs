@@ -3,6 +3,7 @@ using GifStore.Historias.Cliente.Editar;
 using GifStore.Historias.Cliente.Excluir;
 using GifStore.Historias.Produto.Cadastrar;
 using GifStore.Historias.Produto.Editar;
+using GifStore.Historias.Produto.Excluir;
 using GifStore.Historias.Usuario.Cadastrar;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +35,7 @@ namespace GifStore
             services.AddScoped<ExcluirCliente>();
             services.AddScoped<CadastrarProduto>();
             services.AddScoped<EditarProduto>();
+            services.AddScoped<ExcluirProduto>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
