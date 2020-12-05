@@ -32,5 +32,18 @@ namespace GifStore.Controllers
             await cadastrarProduto.Executar(cadastrarProdutoVm);
             return RedirectToAction(nameof(Index));
         }
+        
+        public IActionResult Detalhes(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var produto = contexto.Produtos.FirstOrDefault(x => x.Id == id);
+
+            if (produto == null)
+                return NotFound();
+
+            return View(produto);
+        }
     }
 }
