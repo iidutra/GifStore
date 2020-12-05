@@ -1,8 +1,5 @@
 ﻿using GifStore.Data;
-using GifStore.Historias.Cliente.Cadastrar;
 using Historias.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

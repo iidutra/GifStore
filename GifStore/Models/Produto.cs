@@ -15,5 +15,11 @@ namespace GifStore.Models
         public string Nome { get; private set; }
         public StatusDoProduto Status { get; set; }
         public Cliente Cliente { get; private set; }
+
+        public void AlterarDados(string nome, StatusDoProduto status)
+        {
+            Nome = nome;
+            Status = status;
+        }
     }
 }

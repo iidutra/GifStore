@@ -1,5 +1,7 @@
 ﻿using GifStore.Data;
 using GifStore.Historias.Produto.Cadastrar;
+using GifStore.Historias.Produto.Editar;
+using GifStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,6 +46,34 @@ namespace GifStore.Controllers
                 return NotFound();
 
             return View(produto);
+        }
+
+        public async Task<IActionResult> Editar(int id)
+        {
+            var produto = contexto.Produtos.Find(id);
+            var resultado = EditarVm(produto);
+            return View(resultado);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar([FromServices] EditarProduto editarProduto,
+            EditarProdutoViewModel editarProdutoVm)
+        {
+            if (!ModelState.IsValid)
+                return View(editarProdutoVm);
+
+            await editarProduto.Executar(editarProdutoVm);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public EditarProdutoViewModel EditarVm(Produto produto)
+        {
+            return new EditarProdutoViewModel()
+            {
+                Id = produto.Id,
+                Nome = produto.Nome,
+                Status = produto.Status
+            };
         }
     }
 }
