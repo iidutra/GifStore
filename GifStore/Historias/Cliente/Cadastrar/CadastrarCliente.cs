@@ -20,7 +20,7 @@ namespace GifStore.Historias.Usuario.Cadastrar
         public async Task Executar(CadastrarClienteViewModel cadastrarCliente)
         {
             var clienteExists = await contexto.Clientes.AnyAsync(x => x.Cpf == cadastrarCliente.Cpf || x.Email == cadastrarCliente.Email);
-
+         
             if (clienteExists)
             {
                 Erros.Add("Cliente", "CPF ou Email já cadastrado, por favor insira os dados válidos!");
@@ -30,7 +30,8 @@ namespace GifStore.Historias.Usuario.Cadastrar
                 0,
                 cadastrarCliente.Nome,
                 cadastrarCliente.Email,
-                cadastrarCliente.Cpf
+                cadastrarCliente.Cpf,
+                cadastrarCliente.ProdutoId
                 );
 
             await contexto.AddAsync(cliente);

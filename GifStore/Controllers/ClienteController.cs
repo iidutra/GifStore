@@ -5,6 +5,7 @@ using GifStore.Historias.Cliente.Excluir;
 using GifStore.Historias.Usuario.Cadastrar;
 using GifStore.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,7 +24,15 @@ namespace GifStore.Controllers
         {
             return View(contexto.Clientes.ToList());
         }
-        public IActionResult Cadastrar() => View();
+        public IActionResult Cadastrar()
+        {
+            var listaDeProdutosId = contexto.Clientes.Select(x => x.ProdutoId).ToList();
+            var produtosQuePodemSerVinculados = contexto.Produtos
+                .Where(x => !listaDeProdutosId
+                .Contains(x.Id) && x.Status == Data.Enum.StatusDoProduto.ativo);
+            ViewBag.CadastrarProduto = new SelectList(produtosQuePodemSerVinculados, "Id", "Nome");
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Cadastrar(
@@ -49,7 +58,7 @@ namespace GifStore.Controllers
 
             return View(cliente);
         }
-        public async Task<IActionResult> Editar(int id)
+        public IActionResult Editar(int id)
         {
             var cliente = contexto.Clientes.Find(id);
             var resultado = EditarVM(cliente);

@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>1b458434-6e6e-4b2b-9bce-1208ded92f5d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <StartupObject>GifStore.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

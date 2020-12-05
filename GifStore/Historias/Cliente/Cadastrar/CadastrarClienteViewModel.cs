@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GifStore.Historias.Cliente.Cadastrar
 {
@@ -15,5 +16,8 @@ namespace GifStore.Historias.Cliente.Cadastrar
         [Display(Name = "Email")]
         [Required(ErrorMessage = "{0} é obrigatório")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "{0} é obrigatório")]
+        public int ProdutoId { get; set; }
     }
 }

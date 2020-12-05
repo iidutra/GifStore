@@ -49,7 +49,7 @@ namespace GifStore.Controllers
             return View(produto);
         }
 
-        public async Task<IActionResult> Editar(int id)
+        public IActionResult Editar(int id)
         {
             var produto = contexto.Produtos.Find(id);
             var resultado = EditarVm(produto);
@@ -70,6 +70,11 @@ namespace GifStore.Controllers
         [HttpPost]
         public async Task<IActionResult> Excluir([FromServices] ExcluirProduto excluirProduto, int produtoId)
         {
+            var clienteExists = contexto.Clientes.Any(x => x.ProdutoId == produtoId);
+
+            if (clienteExists)
+                return BadRequest();
+
             await excluirProduto.Executar(produtoId);
             NotificarSucesso();
             return RedirectToAction(nameof(Index));

@@ -4,6 +4,7 @@ namespace GifStore.Models
 {
     public class Produto
     {
+
         public Produto(int id, string nome, StatusDoProduto status)
         {
             Id = id;

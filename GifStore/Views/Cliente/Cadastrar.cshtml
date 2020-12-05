@@ -21,6 +21,13 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="ProdutoId" class="control-label">Status</label>
+                <select id="Status" name="ProdutoId" asp-items="@ViewBag.CadastrarProduto" class="form-control">
+                    <option value="">Selecione...</option>
+                </select>
+                <span asp-validation-for="ProdutoId" class="text-danger"></span>
+            </div>
             <div class="form-group mt-4">
                 <button type="submit" class="btn btn-success"><em class="mdi mdi-check"></em> Salvar</button>
                 <a asp-action="Index" class="btn btn-outline-inverse"><em class="mdi mdi-close"></em> Cancelar</a>
