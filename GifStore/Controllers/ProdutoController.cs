@@ -1,6 +1,7 @@
 ﻿using GifStore.Data;
 using GifStore.Historias.Produto.Cadastrar;
 using GifStore.Historias.Produto.Editar;
+using GifStore.Historias.Produto.Excluir;
 using GifStore.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GifStore.Controllers
 {
-    public class ProdutoController : Controller
+    public class ProdutoController : BaseController
     {
         private readonly DataContexto contexto;
 
@@ -63,6 +64,14 @@ namespace GifStore.Controllers
                 return View(editarProdutoVm);
 
             await editarProduto.Executar(editarProdutoVm);
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Excluir([FromServices] ExcluirProduto excluirProduto, int produtoId)
+        {
+            await excluirProduto.Executar(produtoId);
+            NotificarSucesso();
             return RedirectToAction(nameof(Index));
         }
 
