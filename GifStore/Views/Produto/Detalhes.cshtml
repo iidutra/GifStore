@@ -1,0 +1,37 @@
+﻿@model GifStore.Models.Produto
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover table-click">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Model.Nome
+                        </td>
+                        <td>
+                            @Model.Status.ToString()
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="mb-2">
+            <a asp-action="Editar" asp-route-id="@Model.Id" class="btn btn-primary float-left">Editar</a>
+            <button class="btn btn-secondary d-inline-block float-left abrir-modal-remover-atividade" data-toggle="modal" data-target="#modal-remover-cliente">
+                <em class="mdi mdi-close"></em> Remover
+            </button>
+        </p>
+    </div>
+</div>
